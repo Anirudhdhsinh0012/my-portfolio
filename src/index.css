@@ -1,0 +1,699 @@
+@import url("https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Playfair+Display:wght@300;400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+  }
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Host Grotesk", system-ui, -apple-system, sans-serif;
+  background: #000;
+  overflow-x: hidden;
+}
+
+p,
+a {
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 11px;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+
+/* Hero Section Animations */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hero Content Layout */
+.hero-content-left {
+  margin-left: 5%;
+}
+
+/* 3D Robot Positioning */
+.robot-3d-container {
+  position: absolute;
+  top: 50%;
+  right: 2%;
+  transform: translateY(-50%);
+  width: 850px;
+  height: 850px;
+  z-index: 5;
+  pointer-events: auto;
+}
+
+.robot-3d {
+  width: 100%;
+  height: 100%;
+}
+
+/* Developer Text Below Robot */
+.robot-text-overlay {
+  position: absolute;
+  bottom: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 10;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* Responsive adjustments for 3D Robot */
+@media (max-width: 1400px) {
+  .robot-3d-container {
+    width: 750px;
+    height: 750px;
+    right: 1%;
+  }
+  
+  .hero-content-left {
+    margin-left: 3%;
+  }
+  
+  .robot-text-overlay {
+    bottom: -50px;
+  }
+  
+  .robot-text-overlay h2 {
+    font-size: 4.5rem;
+  }
+}
+
+@media (max-width: 1300px) {
+  .robot-3d-container {
+    width: 650px;
+    height: 650px;
+    right: 0%;
+  }
+  
+  .robot-text-overlay {
+    bottom: -45px;
+  }
+  
+  .robot-text-overlay h2 {
+    font-size: 4rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .robot-3d-container {
+    width: 500px;
+    height: 500px;
+    right: -5%;
+    top: 45%;
+  }
+  
+  .robot-text-overlay {
+    bottom: -35px;
+  }
+  
+  .robot-text-overlay h2 {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .robot-3d-container {
+    width: 300px;
+    height: 300px;
+    right: 10px;
+    top: 350px;
+  }
+  
+  .hero-content-left {
+    margin-left: 0;
+  }
+  
+  .robot-text-overlay {
+    bottom: -25px;
+  }
+  
+  .robot-text-overlay h2 {
+    font-size: 1.75rem;
+    letter-spacing: 0.1em;
+  }
+}
+
+@media (max-width: 640px) {
+  .robot-3d-container {
+    width: 240px;
+    height: 240px;
+    right: 10px;
+    top: 360px;
+  }
+  
+  .robot-text-overlay {
+    bottom: -20px;
+  }
+  
+  .robot-text-overlay h2 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .robot-3d-container {
+    width: 200px;
+    height: 200px;
+    right: 5px;
+    top: 380px;
+  }
+  
+  .robot-text-overlay {
+    bottom: -18px;
+  }
+  
+  .robot-text-overlay h2 {
+    font-size: 1.25rem;
+  }
+}
+
+@keyframes slide-up-delay {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in-delay {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in-slow {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes float-delayed {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-30px);
+  }
+}
+
+@keyframes scroll-down {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 1s ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slide-up 1s ease-out 0.2s forwards;
+  opacity: 0;
+}
+
+.animate-slide-up-delay {
+  animation: slide-up-delay 1s ease-out 0.4s forwards;
+  opacity: 0;
+}
+
+.animate-fade-in-delay {
+  animation: fade-in-delay 1s ease-out 0.4s forwards;
+  opacity: 0;
+}
+
+.animate-fade-in-slow {
+  animation: fade-in-slow 1s ease-out 0.6s forwards;
+  opacity: 0;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float-delayed 8s ease-in-out infinite;
+}
+
+.animate-scroll-down {
+  animation: scroll-down 2s ease-in-out infinite;
+}
+
+/* Museum Style Animations */
+@keyframes pulse-slow {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 4s ease-in-out infinite;
+}
+
+.animate-fade-in-slower {
+  animation: fade-in-slow 1s ease-out 0.8s forwards;
+  opacity: 0;
+}
+
+/* Serif Font for Museum Style */
+.font-serif {
+  font-family: 'Playfair Display', serif;
+}
+
+/* Hero Grid Background */
+.hero-grid-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Dark theme grid - dots pattern like menu */
+.hero-grid-bg.dark {
+  background-image: 
+    radial-gradient(circle, rgba(255, 255, 255, 0.15) 1.5px, transparent 1.5px);
+  background-size: 50px 50px;
+  background-position: 0 0;
+}
+
+/* Light theme grid - dots pattern */
+.hero-grid-bg.light {
+  background-image: 
+    radial-gradient(circle, rgba(0, 0, 0, 0.12) 1.5px, transparent 1.5px);
+  background-size: 50px 50px;
+  background-position: 0 0;
+}
+
+/* Optional: Add subtle lines connecting dots for dark theme */
+.hero-grid-bg.dark::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* Optional: Add subtle lines connecting dots for light theme */
+.hero-grid-bg.light::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* About Me Section - Animated Cards Styles */
+
+/* Floating animation for card wrappers */
+@keyframes floating {
+  0%, 100% {
+    transform: translate(-50%, -50%) translateY(0px);
+  }
+  50% {
+    transform: translate(-50%, -50%) translateY(-10px);
+  }
+}
+
+.card-wrapper {
+  animation: floating 3s ease-in-out infinite;
+}
+
+/* Stagger floating animation for each card */
+.stack-card:nth-child(1) .card-wrapper {
+  animation-delay: 0s;
+}
+
+.stack-card:nth-child(2) .card-wrapper {
+  animation-delay: 0.5s;
+}
+
+.stack-card:nth-child(3) .card-wrapper {
+  animation-delay: 1s;
+}
+
+/* Hero cards hover effect */
+.hero-card {
+  transition: all 0.3s ease;
+}
+
+.hero-card:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Stack cards styling */
+.stack-card {
+  will-change: transform, opacity;
+}
+
+.flip-card-inner {
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+/* Ensure proper 3D perspective */
+.about-cards-section .cards-container {
+  perspective: 1000px;
+}
+
+/* Card gradient overlays for depth */
+.hero-card::after,
+.flip-card-front::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 0%, rgba(0, 0, 0, 0.1) 100%);
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+/* Smooth transitions for theme changes */
+.about-me-wrapper * {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Remove transition from GSAP-controlled elements */
+.hero-card,
+.stack-card,
+.flip-card-inner {
+  transition: none !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1000px) {
+  .hero-cards-container {
+    width: 90vw !important;
+    flex-direction: column;
+    height: auto;
+    gap: 1rem;
+  }
+
+  .hero-card {
+    height: 200px !important;
+  }
+
+  .stack-card {
+    max-width: 90vw;
+    height: 300px;
+  }
+
+  /* Disable complex animations on mobile */
+  .about-hero-section,
+  .about-cards-section {
+    position: relative !important;
+  }
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Animated particles floating */
+@keyframes float-particle {
+  0%, 100% {
+    transform: translate(0, 0);
+    opacity: 0.3;
+  }
+  25% {
+    transform: translate(10px, -15px);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translate(-5px, -25px);
+    opacity: 0.8;
+  }
+  75% {
+    transform: translate(-15px, -10px);
+    opacity: 0.6;
+  }
+}
+
+.animate-float-particle {
+  animation: float-particle 6s ease-in-out infinite;
+}
+
+/* Gradient shift animation */
+@keyframes gradient-shift {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.1) rotate(180deg);
+  }
+}
+
+.animate-gradient-shift {
+  animation: gradient-shift 10s ease-in-out infinite;
+}
+
+/* Slide in from left */
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-in-left {
+  animation: slide-in-left 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+/* Pulse slow animation */
+@keyframes pulse-slow-icon {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow-icon 3s ease-in-out infinite;
+}
+
+/* Utility for preserving 3D transforms */
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+/* Add subtle shadow to cards for depth */
+.shadow-card {
+  box-shadow: 
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06),
+    0 0 0 1px rgba(0, 0, 0, 0.05);
+}
+
+.dark .shadow-card {
+  box-shadow: 
+    0 4px 6px -1px rgba(0, 0, 0, 0.3),
+    0 2px 4px -1px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+  }
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
