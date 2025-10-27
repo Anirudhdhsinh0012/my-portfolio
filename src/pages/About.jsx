@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import AboutMe from '../components/AboutMe';
-import Menu from '../components/Menu';
+
 
 function About({ isDark }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

@@ -14,6 +14,9 @@ function App() {
 
   // Initialize Lenis smooth scroll
   useEffect(() => {
+    // Add lenis class to html element
+    document.documentElement.classList.add('lenis');
+    
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -29,16 +32,20 @@ function App() {
     // Connect Lenis with GSAP ScrollTrigger
     lenis.on('scroll', ScrollTrigger.update);
 
-    gsap.ticker.add((time) => {
-      lenis.raf(time * 1000);
-    });
+    // Request animation frame loop
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
 
     gsap.ticker.lagSmoothing(0);
 
     // Cleanup
     return () => {
       lenis.destroy();
-      gsap.ticker.remove();
+      document.documentElement.classList.remove('lenis');
     };
   }, []);
 

@@ -25,6 +25,12 @@ const HeroSection = ({ isDark, setIsDark }) => {
   const handleNavClick = (e, href) => {
     e.preventDefault();
     
+    // If href is #home, scroll to top
+    if (href === '#home') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+    
     // Scroll to section on home page
     if (location.pathname !== '/') {
       // If not on home page, navigate to home first
@@ -47,7 +53,7 @@ const HeroSection = ({ isDark, setIsDark }) => {
   ];
 
   return (
-    <section className={`min-h-screen ${isDark ? 'bg-black text-white' : 'bg-white text-black'} relative overflow-hidden transition-colors duration-500`}>
+    <section id="home" className={`min-h-screen ${isDark ? 'bg-black text-white' : 'bg-white text-black'} relative overflow-hidden transition-colors duration-500`}>
       {/* Waves Background */}
       <Waves
         lineColor={isDark ? 'rgba(255, 255, 255, 0.15)' : 'rgba(0, 0, 0, 0.12)'}
@@ -136,14 +142,7 @@ const HeroSection = ({ isDark, setIsDark }) => {
             url="https://prod.spline.design/Ggjoqod28HivYapv/scene.splinecode"
             className="robot-3d"
           ></spline-viewer>
-          {/* Developer Text Below Robot */}
-          <div className="robot-text-overlay">
-            <h2 className={`text-6xl sm:text-7xl md:text-8xl font-bold tracking-wider ${
-              isDark ? 'text-gray-900' : 'text-black'
-            }`}>
-              DEVELOPER
-            </h2>
-          </div>
+         
         </div>
 
         {/* Main Content - Left Side */}

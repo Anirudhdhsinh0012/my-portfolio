@@ -1,0 +1,263 @@
+.projects-telescope-wrapper {
+  width: 100%;
+  position: relative;
+}
+
+.projects-telescope-wrapper * {
+  box-sizing: border-box;
+}
+
+.projects-telescope-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.projects-telescope-wrapper h1 {
+  font-size: 4rem;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.projects-telescope-wrapper p {
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.projects-telescope-wrapper section {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.telescope-intro,
+.telescope-outro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.projects-telescope-wrapper.dark .telescope-intro,
+.projects-telescope-wrapper.dark .telescope-outro {
+  background-color: #0f0f0f;
+  color: #fff;
+}
+
+.projects-telescope-wrapper.light .telescope-intro,
+.projects-telescope-wrapper.light .telescope-outro {
+  background-color: #ffffff;
+  color: #0f0f0f;
+}
+
+.spotlight-intro-text-wrapper {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  gap: 0.5rem;
+  z-index: 5;
+}
+
+.spotlight-intro-text {
+  flex: 1;
+  position: relative;
+  will-change: transform;
+}
+
+.spotlight-intro-text:nth-child(1) {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.spotlight-bg-img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  transform: scale(0);
+  will-change: transform;
+}
+
+.spotlight-bg-img img {
+  transform: scale(1.5);
+  will-change: transform;
+}
+
+.spotlight-titles-container {
+  position: absolute;
+  top: 0;
+  left: 15vw;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  clip-path: polygon(
+    50vh 0px,
+    0px 50%,
+    50vh 100%,
+    100% calc(100% + 100vh),
+    100% -100vh
+  );
+  --before-opacity: 0;
+  --after-opacity: 0;
+}
+
+.spotlight-titles-container::before,
+.spotlight-titles-container::after {
+  content: '';
+  position: absolute;
+  width: 100vh;
+  height: 2.5px;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 10;
+}
+
+.projects-telescope-wrapper.dark .spotlight-titles-container::before,
+.projects-telescope-wrapper.dark .spotlight-titles-container::after {
+  background: #fff;
+}
+
+.projects-telescope-wrapper.light .spotlight-titles-container::before,
+.projects-telescope-wrapper.light .spotlight-titles-container::after {
+  background: #0f0f0f;
+}
+
+.spotlight-titles-container::before {
+  top: 0;
+  left: 0;
+  transform: rotate(-45deg) translate(-7rem);
+  opacity: var(--before-opacity);
+}
+
+.spotlight-titles-container::after {
+  bottom: 0;
+  left: 0;
+  transform: rotate(45deg) translate(-7rem);
+  opacity: var(--after-opacity);
+}
+
+.spotlight-titles {
+  position: relative;
+  left: 15%;
+  width: 75%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+  transform: translateY(100%);
+  z-index: 2;
+}
+
+.spotlight-titles h1 {
+  opacity: 0.25;
+  transition: opacity 0.3s ease;
+}
+
+.projects-telescope-wrapper.dark .spotlight-titles h1 {
+  color: #fff;
+}
+
+.projects-telescope-wrapper.light .spotlight-titles h1 {
+  color: #0f0f0f;
+}
+
+.spotlight-images {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  min-width: 300px;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.spotlight-img {
+  position: absolute;
+  width: 200px;
+  height: 150px;
+  will-change: transform;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.spotlight-header {
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  transform: translateY(-50%);
+  transition: opacity 0.3s ease;
+  z-index: 2;
+  opacity: 0;
+}
+
+.projects-telescope-wrapper.dark .spotlight-header {
+  color: #fff;
+}
+
+.projects-telescope-wrapper.light .spotlight-header {
+  color: #0f0f0f;
+}
+
+@media (max-width: 1000px) {
+  .projects-telescope-wrapper h1 {
+    font-size: 2rem;
+  }
+
+  .telescope-intro,
+  .telescope-outro {
+    padding: 2rem;
+    text-align: center;
+  }
+
+  .spotlight-titles-container {
+    clip-path: none;
+  }
+
+  .spotlight-titles-container::before,
+  .spotlight-titles-container::after {
+    display: none;
+  }
+
+  .spotlight-titles {
+    left: 0;
+    padding: 0 2rem;
+  }
+
+  .spotlight-header {
+    display: none;
+  }
+
+  .spotlight-images {
+    width: 100%;
+    min-width: unset;
+  }
+
+  .spotlight-img {
+    width: 150px;
+    height: 112px;
+  }
+}
+
+@media (max-width: 640px) {
+  .projects-telescope-wrapper h1 {
+    font-size: 1.5rem;
+  }
+
+  .projects-telescope-wrapper p {
+    font-size: 1.2rem;
+  }
+
+  .spotlight-titles {
+    gap: 3rem;
+  }
+
+  .spotlight-img {
+    width: 120px;
+    height: 90px;
+  }
+}

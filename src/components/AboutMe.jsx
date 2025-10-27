@@ -22,9 +22,9 @@ const AboutMe = ({ isDark }) => {
       // STACK AND FLIP ANIMATION - Like dealing cards
       ScrollTrigger.create({
         trigger: '.flip-cards-section',
-        start: 'top bottom',
-        end: `+=${window.innerHeight * 4}`,
-        scrub: 1,
+        start: 'top top',
+        end: 'bottom bottom',
+        scrub: 2,
         onUpdate: (self) => {
           const progress = self.progress;
           
@@ -150,9 +150,9 @@ const AboutMe = ({ isDark }) => {
       {/* ANIMATED FLIP CARDS SECTION */}
       <section 
         className={`flip-cards-section relative ${isDark ? 'bg-black' : 'bg-white'}`}
-        style={{ height: '500vh' }}
+        style={{ minHeight: '400vh' }}
       >
-  <div className="sticky top-0 min-h-[90vh] flex items-center justify-center overflow-hidden px-4 pb-10">
+  <div className="sticky top-0 min-h-screen flex items-center justify-center overflow-hidden px-4 py-10">
           <div className="flex flex-wrap justify-center items-center gap-6 max-w-7xl w-full">
             {/* CARD 1: Education */}
             <div
@@ -163,7 +163,7 @@ const AboutMe = ({ isDark }) => {
               }}
             >
             <div 
-              className="flip-card-inner w-[320px] md:w-[400px] h-[450px] group"
+              className="flip-card-inner w-[320px] md:w-[400px] h-[550px] group"
               style={{ 
                 position: 'relative',
                 transformStyle: 'preserve-3d',
@@ -207,7 +207,7 @@ const AboutMe = ({ isDark }) => {
 
               {/* BACK */}
               <div 
-                className={`card-face card-back absolute inset-0 rounded-3xl shadow-2xl p-8 overflow-hidden ${
+                className={`card-face card-back absolute inset-0 rounded-3xl shadow-2xl p-6 overflow-y-auto overflow-x-hidden ${
                   isDark 
                     ? 'bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 text-white' 
                     : 'bg-gradient-to-br from-blue-50 via-white to-blue-50 text-black'
@@ -221,30 +221,55 @@ const AboutMe = ({ isDark }) => {
                 {/* Animated background gradient */}
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-transparent to-purple-500/10 animate-gradient-shift"></div>
                 
-                <div className="relative z-10">
+                <div className="relative z-10 h-full overflow-y-auto overflow-x-hidden flex flex-col">
                   <div className="flex items-center gap-3 mb-6 animate-slide-in-left">
-                    <GraduationCap className="w-8 h-8 text-blue-500" />
+                    <GraduationCap className="w-7 h-7 text-blue-500" />
                     <h3 className="text-2xl font-bold">Education</h3>
                   </div>
-                  <div className="space-y-4">
-                    <h4 className="text-xl font-semibold animate-slide-in-left" style={{ animationDelay: '0.1s' }}>Bachelor of Computer Applications</h4>
-                    <p className={`text-lg animate-slide-in-left ${isDark ? 'text-blue-100' : 'text-gray-700'}`} style={{ animationDelay: '0.2s' }}>
-                      Uka Tarsadiya University
-                    </p>
-                    <div className="flex flex-wrap gap-2 text-sm animate-slide-in-left" style={{ animationDelay: '0.3s' }}>
-                      <span className={`flex items-center gap-2 ${isDark ? 'text-blue-200' : 'text-gray-600'}`}>
-                        <MapPin className="w-4 h-4" />
-                        India
-                      </span>
-                      <span className={isDark ? 'text-blue-200' : 'text-gray-600'}>
-                        | 11/2021 – 05/2024
-                      </span>
-                    </div>
-                    <div className={`mt-4 pt-4 border-t animate-slide-in-left ${isDark ? 'border-white/20' : 'border-black/20'}`} style={{ animationDelay: '0.4s' }}>
-                      <p className={`font-semibold mb-2 ${isDark ? 'text-blue-400' : 'text-blue-600'}`}>CGPA: 7.79</p>
-                      <p className={`text-sm ${isDark ? 'text-blue-100' : 'text-gray-600'}`}>
-                        Focus Areas: Software Engineering, Data Management, Cloud Computing
+                  <div className="space-y-6 flex-1">
+                    {/* Master's Degree */}
+                    <div className="space-y-2">
+                      <h4 className="text-xl font-semibold animate-slide-in-left leading-tight" style={{ animationDelay: '0.1s' }}>Master of Science in Digital Technologies</h4>
+                      <p className={`text-base animate-slide-in-left leading-snug ${isDark ? 'text-blue-100' : 'text-gray-700'}`} style={{ animationDelay: '0.2s' }}>
+                        OSTFALIA UNIVERSITY OF APPLIED SCIENCES
                       </p>
+                      <div className="flex flex-wrap gap-2 text-sm animate-slide-in-left" style={{ animationDelay: '0.3s' }}>
+                        <span className={`flex items-center gap-1 ${isDark ? 'text-blue-200' : 'text-gray-600'}`}>
+                          <MapPin className="w-4 h-4" />
+                          Germany
+                        </span>
+                        <span className={isDark ? 'text-blue-200' : 'text-gray-600'}>
+                          | 10/2025 – Current
+                        </span>
+                      </div>
+                      <div className={`mt-2 animate-slide-in-left`} style={{ animationDelay: '0.4s' }}>
+                        <p className={`text-sm ${isDark ? 'text-blue-100' : 'text-gray-600'}`}>
+                          FOCUS: ML, AI, DEEP LEARNING, AUTONOMOUS SYSTEMS
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Bachelor's Degree */}
+                    <div className={`space-y-2 pt-5 border-t-2 animate-slide-in-left ${isDark ? 'border-white/20' : 'border-black/20'}`} style={{ animationDelay: '0.5s' }}>
+                      <h4 className="text-xl font-semibold leading-tight">Bachelor of Computer Applications</h4>
+                      <p className={`text-base leading-snug ${isDark ? 'text-blue-100' : 'text-gray-700'}`}>
+                        UKA TARSADIYA UNIVERSITY
+                      </p>
+                      <div className="flex flex-wrap gap-2 text-sm">
+                        <span className={`flex items-center gap-1 ${isDark ? 'text-blue-200' : 'text-gray-600'}`}>
+                          <MapPin className="w-4 h-4" />
+                          India
+                        </span>
+                        <span className={isDark ? 'text-blue-200' : 'text-gray-600'}>
+                          | 11/2021 – 05/2024
+                        </span>
+                      </div>
+                      <div className={`mt-2`}>
+                        <p className={`font-semibold text-base ${isDark ? 'text-blue-400' : 'text-blue-600'}`}>CGPA: 7.79</p>
+                        <p className={`text-sm mt-1 ${isDark ? 'text-blue-100' : 'text-gray-600'}`}>
+                          FOCUS AREAS: SOFTWARE ENGINEERING, DATA MANAGEMENT, CLOUD COMPUTING
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -261,7 +286,7 @@ const AboutMe = ({ isDark }) => {
             }}
           >
             <div 
-              className="flip-card-inner w-[320px] md:w-[400px] h-[450px] group"
+              className="flip-card-inner w-[320px] md:w-[400px] h-[550px] group"
               style={{ 
                 position: 'relative',
                 transformStyle: 'preserve-3d',
@@ -349,7 +374,7 @@ const AboutMe = ({ isDark }) => {
             }}
           >
             <div 
-              className="flip-card-inner w-[320px] md:w-[400px] h-[450px] group"
+              className="flip-card-inner w-[320px] md:w-[400px] h-[550px] group"
               style={{ 
                 position: 'relative',
                 transformStyle: 'preserve-3d',
@@ -414,8 +439,20 @@ const AboutMe = ({ isDark }) => {
                       <MapPin className="w-6 h-6 text-green-500" />
                       <h3 className="text-xl font-bold">Journey</h3>
                     </div>
-                    <div className="space-y-2">
+                    <div className="space-y-4">
+                      {/* Germany */}
                       <div className="flex items-start gap-2 animate-slide-in-left" style={{ animationDelay: '0.1s' }}>
+                        <span className="text-2xl">🇩🇪</span>
+                        <div>
+                          <h4 className="font-semibold text-lg">Germany</h4>
+                          <p className={`text-sm ${isDark ? 'text-green-100' : 'text-gray-600'}`}>
+                            Pursuing Masters in Digital Technologies
+                          </p>
+                        </div>
+                      </div>
+                      
+                      {/* India */}
+                      <div className="flex items-start gap-2 animate-slide-in-left" style={{ animationDelay: '0.2s' }}>
                         <span className="text-2xl">🇮🇳</span>
                         <div>
                           <h4 className="font-semibold text-lg">India</h4>
@@ -462,6 +499,31 @@ const AboutMe = ({ isDark }) => {
           </div>
         </div>
       </section>
+
+      {/* Custom Scrollbar Styling */}
+      <style jsx>{`
+        .card-back::-webkit-scrollbar {
+          width: 6px;
+        }
+
+        .card-back::-webkit-scrollbar-track {
+          background: transparent;
+        }
+
+        .card-back::-webkit-scrollbar-thumb {
+          background: ${isDark ? 'rgba(59, 130, 246, 0.3)' : 'rgba(59, 130, 246, 0.2)'};
+          border-radius: 10px;
+        }
+
+        .card-back::-webkit-scrollbar-thumb:hover {
+          background: ${isDark ? 'rgba(59, 130, 246, 0.5)' : 'rgba(59, 130, 246, 0.4)'};
+        }
+
+        /* Hide horizontal scrollbar */
+        .card-back {
+          overflow-x: hidden !important;
+        }
+      `}</style>
     </div>
   );
 };
