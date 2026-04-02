@@ -1,26 +1,10 @@
 import { Moon, Sun, Github, Linkedin } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import Waves from './Waves';
-import { useEffect } from 'react';
 
 const HeroSection = ({ isDark, setIsDark }) => {
   const navigate = useNavigate();
   const location = useLocation();
-
-  useEffect(() => {
-    // Load Spline Viewer script
-    const script = document.createElement('script');
-    script.src = 'https://unpkg.com/@splinetool/viewer@1.10.77/build/spline-viewer.js';
-    script.type = 'module';
-    document.body.appendChild(script);
-
-    return () => {
-      // Cleanup script on unmount
-      if (document.body.contains(script)) {
-        document.body.removeChild(script);
-      }
-    };
-  }, []);
 
   const handleNavClick = (e, href) => {
     e.preventDefault();
@@ -135,18 +119,8 @@ const HeroSection = ({ isDark, setIsDark }) => {
       </nav>
 
       {/* Hero Content */}
-      <div className="relative min-h-screen flex items-center justify-start px-4 sm:px-6 lg:px-8">
-        {/* 3D Spline Robot - Right Side */}
-        <div className="robot-3d-container">
-          <spline-viewer 
-            url="https://prod.spline.design/Ggjoqod28HivYapv/scene.splinecode"
-            className="robot-3d"
-          ></spline-viewer>
-         
-        </div>
-
-        {/* Main Content - Left Side */}
-        <div className="relative z-10 w-full max-w-2xl hero-content-left">
+      <div className="relative min-h-screen flex items-center px-4 sm:px-6 lg:px-8">
+        <div className="relative z-10 w-full max-w-2xl mx-auto lg:mx-0 lg:ml-24">
           {/* Name - Two Tone Style */}
           <div className="mb-6 animate-slide-up">
             <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-tight">

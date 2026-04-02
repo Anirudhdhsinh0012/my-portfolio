@@ -222,6 +222,29 @@ const AboutMe = ({ isDark }) => {
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-transparent to-purple-500/10 animate-gradient-shift"></div>
                 
                 <div className="relative z-10 h-full overflow-y-auto overflow-x-hidden flex flex-col">
+                  <div className={`mb-6 rounded-2xl border p-4 ${isDark ? 'border-white/15 bg-white/5' : 'border-black/10 bg-white/70'}`}>
+                    <div className="flex items-center justify-between gap-4 mb-4">
+                      <div>
+                        <p className={`text-xs uppercase tracking-[0.35em] ${isDark ? 'text-blue-200' : 'text-blue-700'}`}>Academic Journey</p>
+                        <h3 className="text-2xl font-bold mt-1">Education</h3>
+                      </div>
+                      <span className={`px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-widest ${isDark ? 'bg-blue-500/20 text-blue-100' : 'bg-blue-100 text-blue-800'}`}>
+                        02 Degrees
+                      </span>
+                    </div>
+                    <div className="grid grid-cols-2 gap-3 text-sm">
+                      <div className={`rounded-xl p-3 ${isDark ? 'bg-blue-500/10 border border-blue-400/20' : 'bg-blue-50 border border-blue-200'}`}>
+                        <p className={`uppercase tracking-widest text-[0.65rem] mb-1 ${isDark ? 'text-blue-200' : 'text-blue-700'}`}>Master's</p>
+                        <p className="font-semibold leading-tight">MSc Digital Technologies</p>
+                        <p className={`mt-1 ${isDark ? 'text-blue-100/80' : 'text-gray-600'}`}>Germany, current</p>
+                      </div>
+                      <div className={`rounded-xl p-3 ${isDark ? 'bg-indigo-500/10 border border-indigo-400/20' : 'bg-indigo-50 border border-indigo-200'}`}>
+                        <p className={`uppercase tracking-widest text-[0.65rem] mb-1 ${isDark ? 'text-indigo-200' : 'text-indigo-700'}`}>Bachelor's</p>
+                        <p className="font-semibold leading-tight">BCA, UKA Tarsadiya University</p>
+                        <p className={`mt-1 ${isDark ? 'text-indigo-100/80' : 'text-gray-600'}`}>India, 2021 - 2024</p>
+                      </div>
+                    </div>
+                  </div>
                   <div className="flex items-center gap-3 mb-6 animate-slide-in-left">
                     <GraduationCap className="w-7 h-7 text-blue-500" />
                     <h3 className="text-2xl font-bold">Education</h3>
@@ -341,6 +364,28 @@ const AboutMe = ({ isDark }) => {
                 <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 via-transparent to-pink-500/10 animate-gradient-shift"></div>
                 
                 <div className="relative z-10">
+                  <div className={`mb-6 rounded-2xl border p-4 ${isDark ? 'border-white/15 bg-white/5' : 'border-black/10 bg-white/70'}`}>
+                    <p className={`text-xs uppercase tracking-[0.35em] ${isDark ? 'text-purple-200' : 'text-purple-700'}`}>Technical Focus</p>
+                    <h3 className="text-2xl font-bold mt-1 mb-3">Specialization</h3>
+                    <div className="flex flex-wrap gap-2">
+                      {['Full-Stack Development', 'AI & Machine Learning', 'Mobile Development', 'Data Engineering'].map((item, index) => (
+                        <span
+                          key={item}
+                          className={`px-3 py-1.5 rounded-full text-xs font-semibold tracking-wide border ${
+                            index % 2 === 0
+                              ? isDark
+                                ? 'border-purple-400/30 bg-purple-500/10 text-purple-100'
+                                : 'border-purple-200 bg-purple-50 text-purple-800'
+                              : isDark
+                                ? 'border-pink-400/30 bg-pink-500/10 text-pink-100'
+                                : 'border-pink-200 bg-pink-50 text-pink-800'
+                          }`}
+                        >
+                          {item}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
                   <h3 className="text-2xl font-bold mb-6 animate-slide-in-left">Specialization</h3>
                   <ul className="space-y-4">
                     <li className={`flex items-start gap-3 animate-slide-in-left ${isDark ? 'text-purple-100' : 'text-gray-700'}`} style={{ animationDelay: '0.1s' }}>
@@ -433,6 +478,33 @@ const AboutMe = ({ isDark }) => {
                 <div className="absolute inset-0 bg-gradient-to-br from-green-500/10 via-transparent to-emerald-500/10 animate-gradient-shift"></div>
                 
                 <div className="relative z-10">
+                  <div className={`mb-6 rounded-2xl border p-4 ${isDark ? 'border-white/15 bg-white/5' : 'border-black/10 bg-white/70'}`}>
+                    <div className="flex items-center justify-between gap-4 mb-4">
+                      <div>
+                        <p className={`text-xs uppercase tracking-[0.35em] ${isDark ? 'text-green-200' : 'text-green-700'}`}>Global Journey</p>
+                        <h3 className="text-2xl font-bold mt-1">Journey</h3>
+                      </div>
+                      <span className={`px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-widest ${isDark ? 'bg-green-500/20 text-green-100' : 'bg-green-100 text-green-800'}`}>
+                        2 Countries
+                      </span>
+                    </div>
+                    <div className="space-y-3">
+                      <div className={`flex items-start gap-3 rounded-xl p-3 ${isDark ? 'bg-green-500/10 border border-green-400/20' : 'bg-green-50 border border-green-200'}`}>
+                        <span className="text-2xl">🇩🇪</span>
+                        <div>
+                          <p className="font-semibold">Germany</p>
+                          <p className={`text-sm ${isDark ? 'text-green-100/80' : 'text-gray-600'}`}>Pursuing MSc in Digital Technologies</p>
+                        </div>
+                      </div>
+                      <div className={`flex items-start gap-3 rounded-xl p-3 ${isDark ? 'bg-emerald-500/10 border border-emerald-400/20' : 'bg-emerald-50 border border-emerald-200'}`}>
+                        <span className="text-2xl">🇮🇳</span>
+                        <div>
+                          <p className="font-semibold">India</p>
+                          <p className={`text-sm ${isDark ? 'text-emerald-100/80' : 'text-gray-600'}`}>Completed BCA and AI-driven projects</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                   {/* Journey */}
                   <div className="mb-6">
                     <div className="flex items-center gap-3 mb-4 animate-slide-in-left">

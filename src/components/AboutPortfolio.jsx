@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import TrueFocus from './TrueFocus';
 
 // Register GSAP plugin
 if (typeof window !== 'undefined') {
@@ -199,9 +200,18 @@ const AboutPortfolio = ({ isDark }) => {
       {/* HERO SECTION */}
       <section className={`hero-section ${isDark ? 'bg-black' : 'bg-white'}`}>
         <div className="hero-content">
-          <h1 className="hero-title" style={{ color: isDark ? '#ffffff' : '#000000' }}>
-            Behind The Code
-          </h1>
+          <div className="hero-title" style={{ color: isDark ? '#ffffff' : '#000000' }}>
+            <TrueFocus
+              sentence="BEHIND THE CODE"
+              borderColor={isDark ? '#ffffff' : '#000000'}
+              glowColor={isDark ? 'rgba(255, 255, 255, 0.55)' : 'rgba(0, 0, 0, 0.4)'}
+              animationDuration={0.55}
+              pauseBetweenAnimations={0.7}
+              fontSize="clamp(4rem, 12vw, 12rem)"
+              fontWeight={900}
+              className="justify-center"
+            />
+          </div>
         </div>
       </section>
 
@@ -342,9 +352,18 @@ const AboutPortfolio = ({ isDark }) => {
       {/* OUTRO SECTION */}
       <section className={`outro-section ${isDark ? 'bg-black' : 'bg-white'}`}>
         <div className="outro-content">
-          <h1 className="outro-title" style={{ color: isDark ? '#ffffff' : '#000000' }}>
-            Where Vision Meets Execution
-          </h1>
+          <div className="outro-title" style={{ color: isDark ? '#ffffff' : '#000000' }}>
+            <TrueFocus
+              sentence="WHERE VISION MEETS EXECUTION"
+              borderColor={isDark ? '#ffffff' : '#000000'}
+              glowColor={isDark ? 'rgba(255, 255, 255, 0.55)' : 'rgba(0, 0, 0, 0.4)'}
+              animationDuration={0.55}
+              pauseBetweenAnimations={0.7}
+              fontSize="clamp(4rem, 12vw, 12rem)"
+              fontWeight={900}
+              className="justify-center"
+            />
+          </div>
         </div>
       </section>
 
