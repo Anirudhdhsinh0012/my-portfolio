@@ -1,4 +1,4 @@
-import { Mail, MapPin, Phone, Linkedin } from 'lucide-react';
+import { Mail, MapPin, Phone, Linkedin, ArrowRight } from 'lucide-react';
 import DecryptedText from './DecryptedText';
 
 const Contact = ({ isDark }) => {
@@ -12,73 +12,29 @@ const Contact = ({ isDark }) => {
     profileImage: '/profile-image.jpg', // Update with your actual image path
   };
 
-  // Use the same navigation links from the header
-  const navigationLinks = [
-    { label: 'HOME', href: '#home' },
-    { label: 'ABOUT ME', href: '#about' },
-    { label: 'MY SERVICES', href: '#services' },
-    { label: 'FEATURED PROJECTS', href: '#projects' },
-    { label: 'TECHNICAL SKILLS', href: '#skills' },
-    { label: 'EXPERIENCE', href: '#experience' },
-  ];
-
-  const handleNavClick = (e, href) => {
-    e.preventDefault();
-    
-    // If href is #home, scroll to top
-    if (href === '#home') {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      return;
-    }
-    
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  };
-
   return (
     <section
       id="contact"
-      className={`min-h-screen relative transition-colors duration-500 ${
-        isDark ? 'bg-black text-white' : 'bg-white text-gray-900'
+      className={`min-h-screen relative transition-colors duration-500 overflow-hidden ${
+        isDark 
+          ? 'bg-gradient-to-br from-amber-950 via-orange-950 via-yellow-900 to-amber-950 text-white' 
+          : 'bg-gradient-to-br from-amber-50 via-yellow-50 to-orange-50 text-gray-900'
       }`}
+      style={{
+        backgroundImage: isDark ? 'linear-gradient(135deg, rgba(120,53,15,0.8) 0%, rgba(154,78,16,0.6) 25%, rgba(180,83,9,0.7) 50%, rgba(120,53,15,0.8) 100%)' : undefined
+      }}
     >
-      {/* Email Me Button */}
-      <div className="w-full py-12 flex justify-center items-center border-b border-gray-800">
-        <a
-          href={`mailto:${contactInfo.email}`}
-          className={`text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight transition-opacity ${
-            isDark ? 'text-white' : 'text-black'
-          }`}
-        >
-          <DecryptedText
-            text="CLICK HERE TO EMAIL ME"
-            speed={30}
-            maxIterations={15}
-            animateOn="view"
-            className={isDark ? 'text-white' : 'text-black'}
-            encryptedClassName="opacity-50"
-          />
-        </a>
-      </div>
-
-      {/* Main Content */}
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
-          {/* Left Column - Navigation Links */}
-          <div className="flex flex-col space-y-6 text-right lg:text-right">
-            {navigationLinks.map((link, index) => (
-              <a
-                key={index}
-                href={link.href}
-                onClick={(e) => handleNavClick(e, link.href)}
-                className={`text-lg font-medium uppercase tracking-wide transition-opacity cursor-pointer ${
-                  isDark ? 'text-white' : 'text-gray-900'
-                }`}
-              >
+      {/* Main Content - 2 Column Layout */}
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-20 h-full">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[70vh]">
+          {/* Left Column - Heading & CTA */}
+          <div className="flex flex-col space-y-8">
+            <div>
+              <h2 className={`text-5xl md:text-6xl lg:text-7xl font-black uppercase tracking-tight leading-tight ${
+                isDark ? 'text-white' : 'text-gray-900'
+              }`}>
                 <DecryptedText
-                  text={link.label}
+                  text="Ready to illuminate"
                   speed={40}
                   maxIterations={12}
                   animateOn="both"
@@ -87,105 +43,128 @@ const Contact = ({ isDark }) => {
                   className={isDark ? 'text-white' : 'text-gray-900'}
                   encryptedClassName="opacity-60"
                 />
-              </a>
-            ))}
-          </div>
-
-          {/* Center Column - Profile Image */}
-          <div className="flex justify-center">
-            <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-gray-700">
-              <img
-                src={contactInfo.profileImage}
-                alt={contactInfo.name}
-                className="w-full h-full object-cover"
-                onError={(e) => {
-                  e.target.src = 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop';
-                }}
-              />
+              </h2>
+              <h3 className="text-5xl md:text-6xl lg:text-7xl font-black uppercase tracking-tight leading-tight mt-4">
+                <span className="bg-gradient-to-r from-yellow-400 to-amber-500 bg-clip-text text-transparent">
+                  <DecryptedText
+                    text="your brand?"
+                    speed={40}
+                    maxIterations={12}
+                    animateOn="both"
+                    sequential={true}
+                    revealDirection="start"
+                    className="bg-gradient-to-r from-yellow-400 to-amber-500 bg-clip-text text-transparent"
+                    encryptedClassName="opacity-60"
+                  />
+                </span>
+              </h3>
             </div>
+            <a
+              href={`mailto:${contactInfo.email}`}
+              className="inline-flex items-center space-x-3 px-8 py-4 bg-gradient-to-r from-yellow-400 to-amber-500 text-gray-900 font-bold uppercase tracking-widest transition-all duration-300 hover:shadow-lg hover:shadow-yellow-400/50 hover:scale-105 active:scale-95 w-fit"
+            >
+              <span>GET IN TOUCH</span>
+              <ArrowRight className="w-5 h-5" />
+            </a>
           </div>
 
           {/* Right Column - Contact Information */}
-          <div className="flex flex-col space-y-6 text-left">
-            <a
-              href={`mailto:${contactInfo.email}`}
-              className={`flex items-center space-x-3 group transition-opacity ${
-                isDark ? 'text-white' : 'text-gray-900'
-              }`}
-            >
-              <Mail className="w-5 h-5" />
-              <span className="text-lg font-medium">
+          <div className="flex flex-col space-y-10">
+            <div>
+              <div className={`text-sm font-bold uppercase tracking-widest mb-3 ${
+                isDark ? 'text-yellow-300' : 'text-amber-600'
+              }`}>
+                EMAIL
+              </div>
+              <a
+                href={`mailto:${contactInfo.email}`}
+                className={`text-lg md:text-xl font-semibold transition-all duration-300 hover:text-yellow-400 block ${
+                  isDark ? 'text-white' : 'text-gray-900'
+                }`}
+              >
                 <DecryptedText
                   text={contactInfo.email}
-                  speed={30}
-                  maxIterations={10}
-                  animateOn="both"
-                  sequential={true}
+                  speed={40}
+                  maxIterations={12}
+                  animateOn="hover"
+                  sequential={false}
                   revealDirection="start"
                   className={isDark ? 'text-white' : 'text-gray-900'}
                   encryptedClassName="opacity-60"
                 />
-              </span>
-            </a>
-
-            <div className="flex items-center space-x-3">
-              <MapPin className="w-5 h-5" />
-              <span className="text-lg font-medium">
-                <DecryptedText
-                  text={contactInfo.location}
-                  speed={30}
-                  maxIterations={10}
-                  animateOn="both"
-                  sequential={true}
-                  revealDirection="start"
-                  className={isDark ? 'text-white' : 'text-gray-900'}
-                  encryptedClassName="opacity-60"
-                />
-              </span>
+              </a>
             </div>
 
-            <a
-              href={`tel:${contactInfo.phone}`}
-              className={`flex items-center space-x-3 group transition-opacity ${
-                isDark ? 'text-white' : 'text-gray-900'
-              }`}
-            >
-              <Phone className="w-5 h-5" />
-              <span className="text-lg font-medium">
+            <div>
+              <div className={`text-sm font-bold uppercase tracking-widest mb-3 ${
+                isDark ? 'text-yellow-300' : 'text-amber-600'
+              }`}>
+                PHONE
+              </div>
+              <a
+                href={`tel:${contactInfo.phone}`}
+                className={`text-lg md:text-xl font-semibold transition-all duration-300 hover:text-yellow-400 block ${
+                  isDark ? 'text-white' : 'text-gray-900'
+                }`}
+              >
                 <DecryptedText
                   text={contactInfo.phone}
-                  speed={30}
-                  maxIterations={10}
-                  animateOn="both"
-                  sequential={true}
+                  speed={40}
+                  maxIterations={12}
+                  animateOn="hover"
+                  sequential={false}
                   revealDirection="start"
                   className={isDark ? 'text-white' : 'text-gray-900'}
                   encryptedClassName="opacity-60"
                 />
-              </span>
-            </a>
+              </a>
+            </div>
 
-            <a
-              href={contactInfo.linkedinUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center space-x-3 group transition-opacity text-pink-500"
-            >
-              <Linkedin className="w-5 h-5" />
-              <span className="text-lg font-medium">
-                <DecryptedText
-                  text={contactInfo.linkedin}
-                  speed={30}
-                  maxIterations={10}
-                  animateOn="both"
-                  sequential={true}
-                  revealDirection="start"
-                  className="text-pink-500"
-                  encryptedClassName="opacity-60"
-                />
-              </span>
-            </a>
+            <div>
+              <div className={`text-sm font-bold uppercase tracking-widest mb-3 ${
+                isDark ? 'text-yellow-300' : 'text-amber-600'
+              }`}>
+                LOCATION
+              </div>
+              <div className={`text-lg md:text-xl font-semibold ${
+                isDark ? 'text-white' : 'text-gray-900'
+              }`}>
+                {contactInfo.location}
+              </div>
+            </div>
+
+            <div className="pt-4">
+              <a
+                href={contactInfo.linkedinUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center space-x-2 px-6 py-2 border-2 border-yellow-400 text-yellow-400 font-bold uppercase tracking-wide transition-all duration-300 hover:bg-yellow-400 hover:text-gray-900"
+              >
+                <Linkedin className="w-5 h-5" />
+                <span>Connect on LinkedIn</span>
+              </a>
+            </div>
           </div>
+        </div>
+      </div>
+
+      {/* Bottom Animated Text Decoration */}
+      <div className={`w-full py-8 border-t border-yellow-400 border-opacity-30 flex justify-center items-center ${
+        isDark ? 'bg-black bg-opacity-20' : 'bg-white bg-opacity-20'
+      }`}>
+        <div className={`text-center text-sm md:text-base uppercase tracking-widest font-medium ${
+          isDark ? 'text-yellow-300 opacity-70' : 'text-amber-700 opacity-70'
+        }`}>
+          <DecryptedText
+            text="Let's create something extraordinary"
+            speed={30}
+            maxIterations={10}
+            animateOn="both"
+            sequential={true}
+            revealDirection="start"
+            className={isDark ? 'text-yellow-300 opacity-70' : 'text-amber-700 opacity-70'}
+            encryptedClassName="opacity-40"
+          />
         </div>
       </div>
     </section>
